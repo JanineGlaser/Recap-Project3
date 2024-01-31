@@ -1,3 +1,5 @@
+console.clear();
+
 import { CharacterCard } from "./components/CharacterCard/CharacterCard.js";
 const cardContainer = document.querySelector('[data-js="card-container"]');
 const searchBarContainer = document.querySelector(
@@ -14,4 +16,19 @@ const maxPage = 1;
 const page = 1;
 const searchQuery = "";
 
-CharacterCard();
+
+// fetch Rick&Morty API
+
+const url = "https://rickandmortyapi.com/api/character";
+
+async function fetchData() {
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data.results);
+  data.results.forEach((result) => {
+  CharacterCard(result);
+  });
+  return data;
+}
+
+fetchData();
