@@ -15,7 +15,7 @@ const pagination = document.querySelector('[data-js="pagination"]');
 const maxPage = 42;
 const minPage = 1;
 let page = 1;
-const searchQuery = "";
+let searchQuery = "";
 
 
 // fetch Rick&Morty API
@@ -24,7 +24,8 @@ const searchQuery = "";
 
 async function fetchData() {
   cardContainer.innerHTML=``
-  const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  const url = `https://rickandmortyapi.com/api/character/?page=${page}&name=${searchQuery}`;
+  console.log(searchQuery);
   console.log(url);
   const response = await fetch(url);
   const data = await response.json();
@@ -56,6 +57,13 @@ prevButton.addEventListener('click', () => {
 function updatePaginationDisplay() {
   pagination.textContent = `${page}/${maxPage}`;
 }
+
+searchBar.addEventListener('submit', (event) => {
+  event.preventDefault();
+ 
+  searchQuery = event.target.elements.query.value;
+  fetchData();
+})
 
 
 
