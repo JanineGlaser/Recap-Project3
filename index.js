@@ -61,7 +61,7 @@ function updatePaginationDisplay() {
 searchBar.addEventListener('submit', (event) => {
   event.preventDefault();
  
-  searchQuery = searchBar.value;
+  searchQuery = event.target.elements.query.value;
   fetchData();
 })
 
