@@ -21,7 +21,7 @@ export function CharacterCard(result) {
                 <dt class="card__info-title">Type</dt>
                 <dd class="card__info-description">${result.type}</dd>
                 <dt class="card__info-title">Occurrences</dt>
-                <dd class="card__info-description">${result.episode}</dd>
+                <dd class="card__info-description">${result.episode.length}</dd>
               </dl>
             </div>
           </li>`;
